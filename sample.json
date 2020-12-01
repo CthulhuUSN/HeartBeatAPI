@@ -1,0 +1,44 @@
+{
+    "data": {
+        "id": 1,
+        "type": "heartbeat",
+        "attributes": {
+            "heartbeat_time_gmt": {
+                "current_date_gmt": "01 Dec 2020",
+                "current_time_gmt": 1700
+            },
+            "system_information": {
+                "system": "Windows",
+                "name": "DESKTOP-MCNKQOH",
+                "release": "10",
+                "version": "10.0.19041",
+                "machine": "AMD64",
+                "processor": "AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD"
+            },
+            "memory": {
+                "total": "63.92GB",
+                "available": "54.58GB",
+                "used": "9.33GB",
+                "percentage": "14.6%"
+            },
+            "swap": {
+                "total": "73.42GB",
+                "free": "61.87GB",
+                "used": "11.55GB",
+                "percentage": "15.7%"
+            },
+            "cpu_info": {
+                "physical_cores": 8,
+                "total_cores": 16,
+                "max_frequency": "3900.00Mhz",
+                "min_frequency": "0.00Mhz",
+                "current_frequency": "3900.00Mhz",
+                "total_cpu_usage": "3.9%"
+            },
+            "boot_time": {
+                "boot_time_local": "2020/11/20 7:59:48"
+            },
+            "message": "Thump"
+        }
+    }
+}

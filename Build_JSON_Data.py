@@ -88,7 +88,3 @@ class JSON_Data:
 
         # convert into JSON:
         return json.dumps(json_data)
-
-test = JSON_Data()
-result = test.build_data()
-print(result)

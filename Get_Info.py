@@ -165,3 +165,11 @@ class Info:
         data['total_bytes_sent'] = total_bytes_sent
         data['total_bytes_received'] = total_bytes_received
         return data
+
+    def Get_Remote_Connections(self):
+        for connection in psutil.net_connections():
+            if str(connection.status) == psutil.CONN_ESTABLISHED and str(connection.raddr.ip) != '127.0.0.1':
+                print(connection.raddr.ip)
+
+test = Info()
+test.Get_Remote_Connections()

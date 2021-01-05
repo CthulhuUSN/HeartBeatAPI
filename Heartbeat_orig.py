@@ -1,12 +1,11 @@
 import requests
 from Build_JSON_Data import JSON_Data
-from SFTM_Utilities import get_deviceID
 
 class Requester:
-    server = ""
-    endpoint = "device"
-    deviceID = get_deviceID()
-    url = f"{server}/{endpoint}/{deviceID}/"
+    server = "http://localhost"
+    port = 5000
+    endpoint = "heartbeat"
+    url = f"{server}:{port}/{endpoint}"
 
     def __init__(self, url = url):
         self.url = url
@@ -15,7 +14,6 @@ class Requester:
         data = JSON_Data()
         payload = data.build_data()
         headers = {
-          'X-API-KEY': "",
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }

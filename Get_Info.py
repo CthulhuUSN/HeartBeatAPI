@@ -2,7 +2,6 @@ import time
 import psutil
 import platform
 from datetime import datetime
-import json
 
 class Info:
 
@@ -166,10 +165,17 @@ class Info:
         data['total_bytes_received'] = total_bytes_received
         return data
 
-    def Get_Remote_Connections(self):
+    def Get_TCP_Connections(self):
         for connection in psutil.net_connections():
-            if str(connection.status) == psutil.CONN_ESTABLISHED and str(connection.raddr.ip) != '127.0.0.1':
-                print(connection.raddr.ip)
+            if str(connection.type) == 'SocketKind.SOCK_STREAM':
+                if str(connection.status) == psutil.CONN_LISTEN and str(connection.laddr.ip) != '127.0.0.1':
+                    print(str(connection.laddr.ip) + ":" + str(connection.laddr.port))
+                elif str(connection.laddr.ip) != '127.0.0.1' and str(connection.raddr.ip) != '127.0.0.1':
+                    print(str(connection.laddr.ip) + ":" + str(connection.laddr.port) + " -> " + str(connection.raddr.ip) + ":" + str(connection.raddr.port))
+            elif str(connection.type) == 'SocketKind.SOCK_DGRAM' or str(connection.laddr.ip) != '127.0.0.1':
+                print(str(connection.laddr.ip) + ":" + str(connection.laddr.port))
 
-test = Info()
-test.Get_Remote_Connections()
+    def Get_UDP_Connections(self):
+        for connection in psutil.net_connections():
+            if str(connection.type) == 'SocketKind.SOCK_DGRAM' and str(connection.laddr.ip) != '127.0.0.1':
+                print(str(connection.laddr.ip) + ":" + str(connection.laddr.port))
